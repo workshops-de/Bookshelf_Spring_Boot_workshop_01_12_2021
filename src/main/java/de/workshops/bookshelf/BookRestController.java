@@ -16,6 +16,7 @@ import java.util.List;
 public class BookRestController {
 
     private final ObjectMapper mapper;
+
     private final ResourceLoader resourceLoader;
 
     private List<Book> books;
