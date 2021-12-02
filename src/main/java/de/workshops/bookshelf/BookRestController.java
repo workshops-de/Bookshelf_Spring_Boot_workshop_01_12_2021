@@ -1,38 +1,45 @@
 package de.workshops.bookshelf;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.core.io.ResourceLoader;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 
 @RestController
 @RequestMapping("/book")
 public class BookRestController {
 
-    private final ObjectMapper mapper;
+    private final BookService bookService;
 
-    private final ResourceLoader resourceLoader;
-
-    private List<Book> books;
-
-    public BookRestController(final ObjectMapper mapper, final ResourceLoader resourceLoader) {
-        this.mapper = mapper;
-        this.resourceLoader = resourceLoader;
-    }
-
-    @PostConstruct
-    public void init() throws Exception {
-        final var resource = resourceLoader.getResource("classpath:books.json");
-        this.books = mapper.readValue(resource.getInputStream(), new TypeReference<>() {});
+    public BookRestController(
+            BookService bookService
+    ) {
+        this.bookService = bookService;
     }
 
     @GetMapping
     public List<Book> getAllBooks() {
-        return books;
+        return bookService.getBooks();
+    }
+
+    @GetMapping("/{isbn}")
+    public Book getBookByISBN(@PathVariable String isbn) throws BookException {
+        return bookService.getSingleBook(isbn);
+    }
+
+    @GetMapping(params = "author")
+    public Book searchBookByAuthor(@RequestParam String author) throws BookException {
+        return bookService.searchBookByAuthor(author);
+    }
+
+    @PostMapping("/search")
+    public List<Book> searchBooks(@RequestBody BookSearchRequest request) {
+        return bookService.searchBooks(request);
+    }
+
+    @ExceptionHandler(BookException.class)
+    public ResponseEntity<String> error(BookException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 }
