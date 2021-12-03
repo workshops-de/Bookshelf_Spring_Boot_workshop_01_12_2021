@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/book")
+@RequestMapping(BookRestController.REQUEST_URL)
 public class BookRestController {
+
+    public static final String REQUEST_URL = "/book";
 
     private final BookService bookService;
 
@@ -36,6 +38,11 @@ public class BookRestController {
     @PostMapping("/search")
     public List<Book> searchBooks(@RequestBody BookSearchRequest request) {
         return bookService.searchBooks(request);
+    }
+
+    @PostMapping
+    public Book createBook(@RequestBody Book book) {
+        return bookService.createBook(book);
     }
 
     @ExceptionHandler(BookException.class)
