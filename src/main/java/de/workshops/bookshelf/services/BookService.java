@@ -1,5 +1,9 @@
-package de.workshops.bookshelf;
+package de.workshops.bookshelf.services;
 
+import de.workshops.bookshelf.model.Book;
+import de.workshops.bookshelf.model.BookException;
+import de.workshops.bookshelf.model.BookSearchRequest;
+import de.workshops.bookshelf.repositories.BookRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

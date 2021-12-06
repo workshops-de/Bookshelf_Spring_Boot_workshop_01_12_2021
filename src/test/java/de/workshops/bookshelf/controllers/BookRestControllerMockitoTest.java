@@ -1,5 +1,6 @@
-package de.workshops.bookshelf;
+package de.workshops.bookshelf.controllers;
 
+import de.workshops.bookshelf.services.BookService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;

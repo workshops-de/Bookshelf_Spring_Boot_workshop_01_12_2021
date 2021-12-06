@@ -1,5 +1,6 @@
-package de.workshops.bookshelf;
+package de.workshops.bookshelf.controllers;
 
+import de.workshops.bookshelf.services.BookService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

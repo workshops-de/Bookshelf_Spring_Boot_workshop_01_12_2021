@@ -1,5 +1,9 @@
-package de.workshops.bookshelf;
+package de.workshops.bookshelf.controllers;
 
+import de.workshops.bookshelf.model.Book;
+import de.workshops.bookshelf.model.BookException;
+import de.workshops.bookshelf.model.BookSearchRequest;
+import de.workshops.bookshelf.services.BookService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

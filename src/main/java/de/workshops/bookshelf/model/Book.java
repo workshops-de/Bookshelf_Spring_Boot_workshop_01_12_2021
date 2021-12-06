@@ -1,9 +1,9 @@
-package de.workshops.bookshelf;
+package de.workshops.bookshelf.model;
 
 import lombok.Data;
 
 @Data
-class Book {
+public class Book {
 
     private String title;
 

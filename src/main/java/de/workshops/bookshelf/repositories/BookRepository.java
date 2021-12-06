@@ -1,7 +1,8 @@
-package de.workshops.bookshelf;
+package de.workshops.bookshelf.repositories;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.workshops.bookshelf.model.Book;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Repository;
