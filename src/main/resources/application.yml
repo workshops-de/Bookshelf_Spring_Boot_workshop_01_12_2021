@@ -25,3 +25,8 @@ spring:
       enabled: true
   liquibase:
     drop-first: true
+  security:
+    user:
+      name: bookshelf
+      password: bookshelf
+

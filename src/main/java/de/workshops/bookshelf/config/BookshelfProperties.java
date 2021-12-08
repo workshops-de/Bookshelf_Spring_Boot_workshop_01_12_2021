@@ -9,7 +9,9 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties("bookshelf")
 public class BookshelfProperties {
 
-    private Integer someNumber;
-
     private String title;
+
+    private String version;
+
+    private Integer someNumber;
 }
